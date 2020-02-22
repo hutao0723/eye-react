@@ -1,53 +1,17 @@
-version: 2 
-
-defaults: &defaults
-  docker:
-    - image: circleci/node:10.15.3
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
 jobs:
-  prepare:
-    <<: *defaults
+  build-and-test:
+    executor:
+      name: node/default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn install
-      - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-      - persist_to_workspace:
-          root: .
-          paths:
-            - node_modules
-  test:
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run: yarn test
-  build :
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: build
-          command: yarn build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - dist
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm test
 workflows:
-  version: 2
-  pipeline:
-    jobs:
-      - prepare
-      - build:
-          requires:
-            - test
-      - test:
-          requires:
-            - prepare
+    build-and-test:
+      jobs:
+        - build-and-test
