@@ -8,7 +8,7 @@ module.exports = {
     },
     output: {
         // 输出地址
-        path:path.resolve(__dirname,'./dist/lib'),
+        path:path.resolve(__dirname,'./../../dist/lib'),
         // 输出文件名称,保留8位hash值（无法实现前端静态资源在浏览器上长缓存）
         filename: '[name].[hash:8].js',
         // 通用模块定义

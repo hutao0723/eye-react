@@ -8,7 +8,7 @@ module.exports = {
     },
     output: {
         // 输出地址
-        path:path.resolve(__dirname,'./dist/lib'),
+        path:path.resolve(__dirname,'./../../dist/lib'),
         filename: '[name].js',
         // 通用模块定义
         libraryTarget: "umd", 
@@ -23,7 +23,7 @@ module.exports = {
         new CleanWebpackPlugin(),
     ],
     externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
+        "react": "react",
+        "react-dom": "react-dom"
     }
 }
