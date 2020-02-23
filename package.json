@@ -1,6 +1,6 @@
 {
   "name": "eye-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "一个关于react的 UI",
   "main": "dist/lib/index",
   "types": "dist/lib/index",
