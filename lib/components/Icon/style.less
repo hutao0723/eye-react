@@ -1,11 +1,36 @@
 @import "../../assets/style/variable.less";
 
-.eye-icon{
-    font-size: @page-font-size;
-    line-height: 1;
-    svg{
-        display: inline-block;
-        width: 1em;
-        height: 1em;
+.eye-button{
+    .page-font-style();
+    display: inline-block;
+    padding: 0 1em;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    .animation{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
     }
 }
+.start {
+    position: absolute;
+    border-radius: 50%;
+    background: red;
+    transition-property: transform, background-color, opacity;
+    transform: scale(0);
+  }
+
+  .end {
+    transform: scale(1) !important;
+    opacity: 0;
+  }
+  span{
+      display: inline-block;
+  }

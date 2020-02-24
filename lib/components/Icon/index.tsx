@@ -11,8 +11,8 @@ const Icon:React.FunctionComponent<props> = (props) => {
     const { type, className, ...restProp } = props;
     return (
         <i className={ classNames("eye-icon",className)}  {...restProp}>
-            <svg >
-                <use xlinkHref="#loading" />
+            <svg fill="currentColor">
+                <use xlinkHref={ `#${type}` } />
             </svg>
         </i>   
     )
